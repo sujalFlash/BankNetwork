@@ -1,8 +1,10 @@
+# banks/urls.py
 from django.urls import path, include
 
 urlpatterns = [
-    # non‑auth pages:
-    path('', include('banks.urls_public')),
-    # all JWT‑protected REST endpoints:
-    path('api/', include('banks.urls_rest')),
+    # 1️⃣ Public (no‑auth) views
+    path("",      include("banks.urls_public")),
+
+    # 2️⃣ All REST endpoints (JWT‑protected), under /api/
+    path("api/",  include("banks.urls_rest_view")),
 ]
