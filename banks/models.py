@@ -31,7 +31,7 @@ class BankAccount(models.Model):
     ]
 
     account_id = models.CharField(max_length=64, unique=True)
-    user = models.ForeignKey(BankAccountUser, related_name='accounts', on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, related_name='accounts', on_delete=models.CASCADE)
     account_type = models.CharField(max_length=32)
     currency = models.CharField(max_length=3)
     current_balance = models.DecimalField(max_digits=20, decimal_places=2)

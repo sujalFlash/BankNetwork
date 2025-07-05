@@ -1,6 +1,4 @@
 from django.contrib import admin
 
-from banks.models import BankAccount
-# Register your models here.
-from .models import BankAccountUser
-admin.site.register(BankAccountUser)
+from user_data.models import UserProfile
+admin.site.register(UserProfile)

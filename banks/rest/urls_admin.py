@@ -8,5 +8,5 @@ urlpatterns = [
     
     path('refresh/', TokenRefreshView.as_view(), name='admin_token_refresh'),
    
-    path('logout/', LogoutView.as_view(), name='admin_logout'),
+    path('logout/', LogoutView.as_view(), name='a_logout'),
 ]
