@@ -1,7 +1,8 @@
 from django.db import models
 from django.db.models import JSONField
 from user_data.models import *
-
+from django.conf import settings
+from django.db.models import Q,JSONField
 class Banks(models.Model):
     bank_id = models.AutoField(primary_key=True)
     bank_name = models.CharField(max_length=100)
@@ -48,6 +49,12 @@ class BankAccount(models.Model):
         return self.transactions.order_by('-timestamp')[:50]
 
 class BankingProfessional(models.Model):
+    user = models.OneToOneField(
+    settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='banking_profile',
+        limit_choices_to=Q(banking_profile_isnull=True)
+    )
     ROLE_CHOICES = [
         ("ANALYST", "Analyst"),
         ("INVESTIGATOR", "Investigator"),
